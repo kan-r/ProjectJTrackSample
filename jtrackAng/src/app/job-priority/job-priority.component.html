@@ -1,0 +1,31 @@
+<div class="button-region">
+    <a [routerLink] = "['/JobPriorityCreate']" class="button">Create</a>
+</div>
+
+<div class="report-region-2">
+	<table cellpadding="0" border="0" cellspacing="0" summary="" class="report-standard">
+		<tr >
+			<th></th>
+			<th></th>
+			<th>Job Priority</th>
+			<th>Job Priority Description</th>
+			<th>Active</th>
+			<th>Date Created</th>
+			<th>User Created</th>
+			<th>Date Modified</th>
+			<th>User Modified</th>
+		</tr>
+        <tr *ngFor = 'let jobPriority of jobPriorityList' class="highlight-row">
+            <td><a [routerLink] = "['/JobPriorityEdit', jobPriority.jobPriority]">Edit</a></td>
+            <td><a [routerLink] = "" (click) = "deleteJobPriority(jobPriority.jobPriority)">Delete</a></td>
+            <td>{{jobPriority.jobPriority}}</td>
+            <td>{{jobPriority.jobPriorityDesc}}</td>
+            <td *ngIf="jobPriority.active" align="center"><input type="checkbox" checked disabled></td>
+            <td *ngIf="!jobPriority.active" align="center"><input type="checkbox" disabled></td>
+            <td>{{jobPriority.dateCrt | date : "dd-MMM-yyyy HH:mm:ss"}}</td>
+            <td>{{jobPriority.userCrtObj?.firstName}} {{jobPriority.userCrtObj?.lastName}}</td>
+            <td>{{jobPriority.dateMod | date : "dd-MMM-yyyy HH:mm:ss"}}</td>
+            <td>{{jobPriority.userModObj?.firstName}} {{jobPriority.userModObj?.lastName}}</td>
+        </tr>
+	</table>
+</div>

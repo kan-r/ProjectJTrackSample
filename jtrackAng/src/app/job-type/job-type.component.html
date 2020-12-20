@@ -1,0 +1,31 @@
+<div class="button-region">
+    <a [routerLink] = "['/JobTypeCreate']" class="button">Create</a>
+</div>
+
+<div class="report-region-2">
+	<table cellpadding="0" border="0" cellspacing="0" summary="" class="report-standard">
+		<tr >
+			<th></th>
+			<th></th>
+			<th>Job Type</th>
+			<th>Job Type Description</th>
+			<th>Active</th>
+			<th>Date Created</th>
+			<th>User Created</th>
+			<th>Date Modified</th>
+			<th>User Modified</th>
+		</tr>
+        <tr *ngFor = 'let jobType of jobTypeList' class="highlight-row">
+            <td><a [routerLink] = "['/JobTypeEdit', jobType.jobType]">Edit</a></td>
+            <td><a [routerLink] = "" (click) = "deleteJobType(jobType.jobType)">Delete</a></td>
+            <td>{{jobType.jobType}}</td>
+            <td>{{jobType.jobTypeDesc}}</td>
+            <td *ngIf="jobType.active" align="center"><input type="checkbox" checked disabled></td>
+            <td *ngIf="!jobType.active" align="center"><input type="checkbox" disabled></td>
+            <td>{{jobType.dateCrt | date : "dd-MMM-yyyy HH:mm:ss"}}</td>
+            <td>{{jobType.userCrtObj?.firstName}} {{jobType.userCrtObj?.lastName}}</td>
+            <td>{{jobType.dateMod | date : "dd-MMM-yyyy HH:mm:ss"}}</td>
+            <td>{{jobType.userModObj?.firstName}} {{jobType.userModObj?.lastName}}</td>
+        </tr>
+	</table>
+</div>

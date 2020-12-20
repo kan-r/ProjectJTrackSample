@@ -1,0 +1,35 @@
+<div class="button-region">
+   <a *ngIf="isCurrentUserAdmin" [routerLink] = "['/UserCreate']" class="button">Create</a>
+   <a *ngIf="!isCurrentUserAdmin" [routerLink] = "['/UserCreate']" class="button-disabled">Create</a>
+</div>
+<div class="report-region-2">
+ <table cellpadding="0" border="0" cellspacing="0" summary="" class="report-standard">
+   <tr >
+      <th></th>
+      <th></th>
+      <th>User ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Active</th>
+      <th>Date Created</th>
+      <th>User Created</th>
+      <th>Date Modified</th>
+      <th>User Modified</th>
+   </tr>
+   <tr *ngFor = 'let user of userList' class="highlight-row">
+      <td *ngIf="isCurrentUserAdmin"><a [routerLink] = "['/UserEdit', user.userId]">Edit</a></td>
+      <td *ngIf="!isCurrentUserAdmin"><a style="color: #C6C6C6; text-decoration: underline;">Edit</a></td>
+      <td *ngIf="isCurrentUserAdmin"><a [routerLink] = "" (click) = "deleteUser(user.userId)">Delete</a></td>
+      <td *ngIf="!isCurrentUserAdmin"><a style="color: #C6C6C6; text-decoration: underline;">Delete</a></td>
+      <td>{{user.userId}}</td>
+      <td>{{user.firstName}}</td>
+      <td>{{user.lastName}}</td>
+      <td *ngIf="user.active" align="center"><input type="checkbox" checked disabled></td>
+      <td *ngIf="!user.active" align="center"><input type="checkbox" disabled></td>
+      <td>{{user.dateCrt | date : "dd-MMM-yyyy HH:mm:ss"}}</td>
+      <td>{{user.userCrtObj?.firstName}} {{user.userCrtObj?.lastName}}</td>
+      <td>{{user.dateMod | date : "dd-MMM-yyyy HH:mm:ss"}}</td>
+      <td>{{user.userModObj?.firstName}} {{user.userModObj?.lastName}}</td>
+  </tr>
+ </table>
+</div>

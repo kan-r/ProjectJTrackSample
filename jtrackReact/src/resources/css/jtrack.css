@@ -1,0 +1,191 @@
+/* 
+    Document   : theme_1
+    Created on : 19/06/2013, 10:40:50 AM
+    Author     : d261288
+    Description:
+        Purpose of the stylesheet follows.
+*/
+                
+/* -------------------- Buttons ------------------------- */ 
+
+.button-region {
+        padding: 5px 0 5px 5px;
+}
+
+.button {
+    font: bold 12px Arial, sans-serif;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 4px 8px 4px 8px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    width: 60px;
+    float: left;
+}
+
+.button:hover {
+    background-color: #BBBBBB;
+    cursor: grab;
+}
+
+.button-disabled {
+        font: bold 12px Arial, sans-serif;
+        text-decoration: none;
+        /* background-color: #EEEEEE; */
+        color: #333333;
+        padding: 4px 8px 4px 8px;
+        border-top: 1px solid #CCCCCC;
+        border-right: 1px solid #333333;
+        border-bottom: 1px solid #333333;
+        border-left: 1px solid #CCCCCC;
+        width: 60px;
+        float: left;
+        pointer-events: none;
+        cursor: not-allowed;
+        background-color: #EBEBE4;
+        color: #C6C6C6;
+}
+
+.link-disabled {
+        pointer-events: none;
+        cursor: not-allowed;
+        color: #C6C6C6;
+        text-decoration: underline;
+}
+
+/* -------------------- Report -------------------- */
+
+.report-region {
+        padding: 5px 0 0 5px;
+}
+
+.report-region-2 {
+        padding: 25px 5px 0 5px;
+}
+
+.report-standard {
+        empty-cells: show;
+        border: 1px solid #999;
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        background: url(../img/sReportBG-Standard.png) 0 0 repeat-x #FFF;
+        padding: 6px 0;
+}
+
+.report-standard th {
+        color:#333;
+        font: bold 12px/12px Arial, sans-serif;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+        padding: 0px 10px 4px;
+        background: none transparent;
+        border-bottom: 1px solid #999;
+        text-align: left;
+}
+
+.report-standard th a {
+        color:#333;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+        text-decoration: underline;
+}
+
+.report-standard td {
+        /* background-color: #FFF; */
+        padding: 4px 10px;
+        border-bottom: 1px solid #DDD;
+        font: 12px/12px Arial, sans-serif;
+        text-align: left;
+}
+
+.report-standard td a {
+        text-decoration: underline;
+}
+
+.report-standard td a:hover {
+        color: red;
+}
+
+.report-standard tr td {
+        border-bottom: 1px solid #DDD;
+}
+
+/* Hide Last Border Bottom */
+.report-standard tr:last-child td {
+        border-bottom: none;
+}
+
+.report-standard tr.highlight-row {
+	background-color: #FFF;
+}
+
+.report-standard tr.highlight-row-2 {
+        background-color: #f2f2f2;
+}
+
+.report-standard tr:nth-child(even) {
+        background-color: #FAFAFA;
+}
+
+.report-standard tr:hover {
+        background-color: #f5f5f5;
+}
+
+/* -------------------- Form -------------------- */
+
+.form-region {
+        padding: 5px 0 0 5px;
+}
+
+.form-region-2 {
+        padding: 25px 5px 0 5px;
+}
+
+.form-standard {
+        empty-cells: show;
+        border: 1px solid #999;
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        background: url(../img/sReportBG-Standard.png) 0 0 repeat-x #FFF;
+        padding: 6px 0;
+}
+
+.form-standard th {
+        color:#333;
+        font: bold 12px/12px Arial, sans-serif;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+        padding: 0px 10px 4px;
+        background: none transparent;
+        border-bottom: 1px solid #999;
+        text-align: left;
+}
+
+.form-standard th a {
+        color:#333;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+        text-decoration: underline;
+}
+
+.form-standard td {
+        background-color: #FFF;
+        padding: 4px 10px;
+        border-bottom: 1px solid #DDD;
+        font: 12px/12px Arial, sans-serif;
+        text-align: left;
+}
+
+.form-standard tr td {
+        border-bottom: 1px solid #DDD;
+}
+
+/* Hide Last Border Bottom */
+.form-standard tr:last-child td {
+        border-bottom: none;
+}
+
+.form-standard textarea {
+        width: 200px;
+}

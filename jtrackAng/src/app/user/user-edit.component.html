@@ -1,0 +1,58 @@
+<form (ngSubmit)="updateUser()">
+	<div class="button-region">
+		<a [routerLink] = "['/User']" class="button">Cancel</a>
+		<input type="submit" value="Save" class="button" />
+	</div>
+
+	<div class="form-region-2">
+		<table cellpadding="0" border="0" cellspacing="0" summary="" class="form-standard">
+			<tr>
+				<th><div>Edit User</div></th>
+			</tr>
+			<tr>
+				<td>
+					<table border="0" summary="" >
+						<tr>
+							<td nowrap="nowrap" align="right">
+								<label for="userId">User ID</label>
+							</td>
+							<td  colspan="1" rowspan="1" align="left" valign="middle">
+								<input name="userId" [(ngModel)] = "userModel.userId" disabled="true" />
+							</td>
+						</tr>
+						<tr>
+							<td nowrap="nowrap" align="right">
+								<label for="pword">Password</label>
+							</td>
+							<td  colspan="1" rowspan="1" align="left" valign="middle">
+								<input name="pword" [(ngModel)] = "userModel.pword" />
+							</td>
+						</tr>
+						<tr>
+							<td nowrap="nowrap" align="right">
+								<label for="firstName">First Name</label>
+							</td>
+							<td  colspan="1" rowspan="1" align="left" valign="middle">
+								<input name="firstName" [(ngModel)] = "userModel.firstName" />
+							</td>
+						</tr>
+						<tr>
+							<td nowrap="nowrap" align="right">
+								<label for="lastName">Last Name</label>
+							</td>
+							<td  colspan="1" rowspan="1" align="left" valign="middle">
+								<input name="lastName" [(ngModel)] = "userModel.lastName" />
+							</td>
+						</tr>
+						<tr>
+							<td nowrap="nowrap" align="right"><label>Active</label></td>
+							<td  colspan="1" rowspan="1" align="left" valign="middle">
+								<input type="checkbox" name="active" [(ngModel)] = "userModel.active">
+							</td>
+						</tr>
+					</table> 
+				</td>
+			</tr>
+		</table>
+	</div>
+</form>

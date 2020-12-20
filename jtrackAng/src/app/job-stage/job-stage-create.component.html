@@ -1,0 +1,44 @@
+<form (ngSubmit)="addJobStage()">
+    <div class="button-region">
+        <a [routerLink] = "['/JobStage']" class="button">Cancel</a>
+        <input type="submit" value="Save" class="button" />
+    </div>
+
+    <div class="form-region-2">
+        <table cellpadding="0" border="0" cellspacing="0" summary="" class="form-standard">
+            <tr>
+                <th><div>Create Job Stage</div></th>
+            </tr>
+            <tr>
+                <td>
+                    <table border="0" summary="" >
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="jobStage">Job Stage</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <input name="jobStage" [(ngModel)] = "jobStageModel.jobStage" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="jobStageDesc">Job Stage Description</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <textarea name="jobStageDesc" [(ngModel)] = "jobStageModel.jobStageDesc" rows="3" cols="50"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label>Active</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <input type="checkbox" name="active" [(ngModel)] = "jobStageModel.active">
+                            </td>
+                        </tr>
+                    </table> 
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>

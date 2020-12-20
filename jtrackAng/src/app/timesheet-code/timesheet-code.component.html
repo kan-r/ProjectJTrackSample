@@ -1,0 +1,31 @@
+<div class="button-region">
+    <a [routerLink] = "['/TimesheetCodeCreate']" class="button">Create</a>
+</div>
+
+<div class="form-region-2">
+	<table cellpadding="0" border="0" cellspacing="0" summary="" class="form-standard">
+		<tr >
+			<th></th>
+			<th></th>
+			<th>Timesheet Code</th>
+			<th>Timesheet Code Description</th>
+			<th>Active</th>
+			<th>Date Created</th>
+			<th>User Created</th>
+			<th>Date Modified</th>
+			<th>User Modified</th>
+		</tr>
+        <tr *ngFor = 'let timesheetCode of timesheetCodeList' class="highlight-row">
+            <td><a [routerLink] = "['/TimesheetCodeEdit', timesheetCode.timesheetCode]">Edit</a></td>
+            <td><a [routerLink] = "" (click) = "deleteTimesheetCode(timesheetCode.timesheetCode)">Delete</a></td>
+            <td>{{timesheetCode.timesheetCode}}</td>
+            <td>{{timesheetCode.timesheetCodeDesc}}</td>
+            <td *ngIf="timesheetCode.active" align="center"><input type="checkbox" checked disabled></td>
+            <td *ngIf="!timesheetCode.active" align="center"><input type="checkbox" disabled></td>
+            <td>{{timesheetCode.dateCrt | date : "dd-MMM-yyyy HH:mm:ss"}}</td>
+            <td>{{timesheetCode.userCrtObj?.firstName}} {{timesheetCode.userCrtObj?.lastName}}</td>
+            <td>{{timesheetCode.dateMod | date : "dd-MMM-yyyy HH:mm:ss"}}</td>
+            <td>{{timesheetCode.userModObj?.firstName}} {{timesheetCode.userModObj?.lastName}}</td>
+        </tr>
+	</table>
+</div>

@@ -1,0 +1,170 @@
+<form (ngSubmit)="addJob()">
+    <div class="button-region">
+        <a [routerLink] = "['/Job']" class="button">Cancel</a>
+        <input type="submit" value="Save" class="button" />
+    </div>
+
+    <div class="form-region-2">
+        <table cellpadding="0" border="0" cellspacing="0" summary="" class="form-standard">
+            <tr>
+                <th><div>Create Job </div></th>
+            </tr>
+            <tr>
+                <td>
+                    <table border="0" summary="" >
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="jobName">Job Name</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <input name="jobName" [(ngModel)] = "jobModel.jobName" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="jobDesc">Job  Description</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <textarea name="jobDesc" [(ngModel)] = "jobModel.jobDesc" rows="3" cols="50"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="jobRef">Job Reference</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <input name="jobRef" [(ngModel)] = "jobModel.jobRef" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="jobType">Job Type</label>
+                            </td>
+                            <td colspan="1" rowspan="1" align="left" valign="middle">
+                                <select name="jobType" [(ngModel)] = "jobModel.jobType">
+                                    <option value=""></option>
+                                    <option *ngFor = 'let jobType of jobTypeList' value={{jobType.jobType}}>{{jobType.jobType}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="jobStage">Job Stage</label>
+                            </td>
+                            <td colspan="1" rowspan="1" align="left" valign="middle">
+                                <select name="jobStage" [(ngModel)] = "jobModel.jobStage">
+                                    <option value=""></option>
+                                    <option *ngFor = 'let jobStage of jobStageList' value={{jobStage.jobStage}}>{{jobStage.jobStage}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="jobPriority">Job Priority</label>
+                            </td>
+                            <td colspan="1" rowspan="1" align="left" valign="middle">
+                                <select name="jobPriority" [(ngModel)] = "jobModel.jobPriority">
+                                    <option value=""></option>
+                                    <option *ngFor = 'let jobPriority of jobPriorityList' value={{jobPriority.jobPriority}}>{{jobPriority.jobPriority}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="jobStatus">Job Status</label>
+                            </td>
+                            <td colspan="1" rowspan="1" align="left" valign="middle">
+                                <select name="jobStatus" [(ngModel)] = "jobModel.jobStatus">
+                                    <option value=""></option>
+                                    <option *ngFor = 'let jobStatus of jobStatusList' value={{jobStatus.jobStatus}}>{{jobStatus.jobStatus}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="jobResolution">Job Resolution</label>
+                            </td>
+                            <td colspan="1" rowspan="1" align="left" valign="middle">
+                                <select name="jobResolution" [(ngModel)] = "jobModel.jobResolution">
+                                    <option value=""></option>
+                                    <option *ngFor = 'let jobResolution of jobResolutionList' value={{jobResolution.jobResolution}}>{{jobResolution.jobResolution}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="jobOrder">Job Order</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <input name="jobOrder" [(ngModel)] = "jobModel.jobOrder" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="assignedTo">Assigned To</label>
+                            </td>
+                            <td colspan="1" rowspan="1" align="left" valign="middle">
+                                <select name="assignedTo" [(ngModel)] = "jobModel.assignedTo">
+                                    <option value=""></option>
+                                    <option *ngFor = 'let assignedTo of assignedToList' value={{assignedTo.userId}}>{{assignedTo.firstName}} {{assignedTo.lastName}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="estimatedHrs">Estimated Hrs</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <input name="estimatedHrs" [(ngModel)] = "jobModel.estimatedHrs" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="timesheetCode">Timesheet Code</label>
+                            </td>
+                            <td colspan="1" rowspan="1" align="left" valign="middle">
+                                <select name="timesheetCode" [(ngModel)] = "jobModel.timesheetCode">
+                                    <option *ngFor = 'let timesheetCode of timesheetCodeList' value={{timesheetCode.timesheetCode}}>{{timesheetCode.timesheetCode}} - {{timesheetCode.timesheetCodeDesc}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="estimatedStartDate">Estimated Start Date</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <input type="date" name="estimatedStartDate" [(ngModel)] = "jobModel.estimatedStartDate" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="estimatedEndDate">Estimated End Date</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <input type="date" name="estimatedEndDate" [(ngModel)] = "jobModel.estimatedEndDate" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="parentJobNo">Parent Job ( Project )</label>
+                            </td>
+                            <td colspan="1" rowspan="1" align="left" valign="middle">
+                                <select name="parentJobNo" [(ngModel)] = "jobModel.parentJobNo">
+                                    <option *ngFor = 'let parentJob of parentJobList' value={{parentJob.jobNo}}>{{parentJob.jobName}} - {{parentJob.jobNo}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label>Active</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <input type="checkbox" name="active" [(ngModel)] = "jobModel.active">
+                            </td>
+                        </tr>
+                    </table> 
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>

@@ -1,0 +1,44 @@
+<form (ngSubmit)="addJobPriority()">
+    <div class="button-region">
+        <a [routerLink] = "['/JobPriority']" class="button">Cancel</a>
+        <input type="submit" value="Save" class="button" />
+    </div>
+
+    <div class="form-region-2">
+        <table cellpadding="0" border="0" cellspacing="0" summary="" class="form-standard">
+            <tr>
+                <th><div>Create Job Priority</div></th>
+            </tr>
+            <tr>
+                <td>
+                    <table border="0" summary="" >
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="jobPriority">Job Priority</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <input name="jobPriority" [(ngModel)] = "jobPriorityModel.jobPriority" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="jobPriorityDesc">Job Priority Description</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <textarea name="jobPriorityDesc" [(ngModel)] = "jobPriorityModel.jobPriorityDesc" rows="3" cols="50"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label>Active</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <input type="checkbox" name="active" [(ngModel)] = "jobPriorityModel.active">
+                            </td>
+                        </tr>
+                    </table> 
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>

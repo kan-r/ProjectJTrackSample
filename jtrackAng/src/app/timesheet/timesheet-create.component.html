@@ -1,0 +1,74 @@
+<form (ngSubmit)="addTimesheet()">
+    <div class="button-region">
+        <a [routerLink] = "['/Timesheet']" class="button">Cancel</a>
+        <input type="submit" value="Save" class="button" />
+    </div>
+
+    <div class="form-region-2">
+        <table cellpadding="0" border="0" cellspacing="0" summary="" class="form-standard">
+            <tr>
+                <th><div>Create Timesheet </div></th>
+            </tr>
+            <tr>
+                <td>
+                    <table border="0" summary="" >
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="user">User </label>
+                            </td>
+                            <td colspan="1" rowspan="1" align="left" valign="middle">
+                                <select name="user" [(ngModel)] = "timesheetModel.userId">
+                                    <option *ngFor = 'let user of userList' value={{user.userId}}>{{user.firstName}} {{user.lastName}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="job">Job</label>
+                            </td>
+                            <td colspan="1" rowspan="1" align="left" valign="middle">
+                                <select name="job" [(ngModel)] = "timesheetModel.jobNo">
+                                    <option *ngFor = 'let job of jobList' value={{job.jobNo}}>{{job.jobName}} - {{job.jobNo}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="workedDate">Worked Date</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <input type="date" name="workedDate" [(ngModel)] = "timesheetModel.workedDate" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="workedHrs">Worked Hours</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <input name="workedHrs" [(ngModel)] = "timesheetModel.workedHrs" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="timesheetCode">Timesheet Code</label>
+                            </td>
+                            <td colspan="1" rowspan="1" align="left" valign="middle">
+                                <select name="timesheetCode" [(ngModel)] = "timesheetModel.timesheetCode">
+                                    <option *ngFor = 'let timesheetCode of timesheetCodeList' value={{timesheetCode.timesheetCode}}>{{timesheetCode.timesheetCode}} - {{timesheetCode.timesheetCodeDesc}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label>Active</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <input type="checkbox" name="active" [(ngModel)] = "timesheetModel.active">
+                            </td>
+                        </tr>
+                    </table> 
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>

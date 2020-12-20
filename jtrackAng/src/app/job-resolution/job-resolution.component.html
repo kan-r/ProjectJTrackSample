@@ -1,0 +1,31 @@
+<div class="button-region">
+    <a [routerLink] = "['/JobResolutionCreate']" class="button">Create</a>
+</div>
+
+<div class="report-region-2">
+	<table cellpadding="0" border="0" cellspacing="0" summary="" class="report-standard">
+		<tr >
+			<th></th>
+			<th></th>
+			<th>Job Resolution</th>
+			<th>Job Resolution Description</th>
+			<th>Active</th>
+			<th>Date Created</th>
+			<th>User Created</th>
+			<th>Date Modified</th>
+			<th>User Modified</th>
+		</tr>
+        <tr *ngFor = 'let jobResolution of jobResolutionList' class="highlight-row">
+            <td><a [routerLink] = "['/JobResolutionEdit', jobResolution.jobResolution]">Edit</a></td>
+            <td><a [routerLink] = "" (click) = "deleteJobResolution(jobResolution.jobResolution)">Delete</a></td>
+            <td>{{jobResolution.jobResolution}}</td>
+            <td>{{jobResolution.jobResolutionDesc}}</td>
+            <td *ngIf="jobResolution.active" align="center"><input type="checkbox" checked disabled></td>
+            <td *ngIf="!jobResolution.active" align="center"><input type="checkbox" disabled></td>
+            <td>{{jobResolution.dateCrt | date : "dd-MMM-yyyy HH:mm:ss"}}</td>
+            <td>{{jobResolution.userCrtObj?.firstName}} {{jobResolution.userCrtObj?.lastName}}</td>
+            <td>{{jobResolution.dateMod | date : "dd-MMM-yyyy HH:mm:ss"}}</td>
+            <td>{{jobResolution.userModObj?.firstName}} {{jobResolution.userModObj?.lastName}}</td>
+        </tr>
+	</table>
+</div>

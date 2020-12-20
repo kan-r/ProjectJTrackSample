@@ -1,0 +1,160 @@
+<div class="form-region">
+    <form (ngSubmit)="getJobList()">
+        <table cellpadding="0" border="1" cellspacing="0" summary="" class="form-standard">
+            <tr>
+                <td>
+                    <table border="0" summary="" >
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="jobName">Job Name</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <input name="jobName" [(ngModel)] = "jobSOModel.jobName" />
+                            </td>
+                            <td nowrap="nowrap" align="right">
+                                <label for="jobType">Job Type</label>
+                            </td>
+                            <td colspan="1" rowspan="1" align="left" valign="middle">
+                                <select name="jobType" [(ngModel)] = "jobSOModel.jobType">
+                                    <option value=""></option>
+                                    <option *ngFor = 'let jobType of jobTypeList' value={{jobType.jobType}}>{{jobType.jobType}}</option>
+                                </select>
+                            </td>
+                            <td nowrap="nowrap" align="right">
+                                <label>Include Child Jobs</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <input type="checkbox" name="includeChildJobs" [(ngModel)] = "jobSOModel.includeChildJobs">
+                            </td>
+                            <td nowrap="nowrap" align="right">
+                                <label>==></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="jobStatus">Job Status</label>
+                            </td>
+                            <td colspan="1" rowspan="1" align="left" valign="middle">
+                                <select name="jobStatus" [(ngModel)] = "jobSOModel.jobStatus">
+                                    <option value=""></option>
+                                    <option *ngFor = 'let jobStatus of jobStatusList' value={{jobStatus.jobStatus}}>{{jobStatus.jobStatus}}</option>
+                                </select>
+                            </td>
+                            <td nowrap="nowrap" align="right">
+                                <label for="assignedTo">Assigned To</label>
+                            </td>
+                            <td colspan="1" rowspan="1" align="left" valign="middle">
+                                <select name="assignedTo" [(ngModel)] = "jobSOModel.assignedTo">
+                                    <option value=""></option>
+                                    <option *ngFor = 'let assignedTo of assignedToList' value={{assignedTo.userId}}>{{assignedTo.lastName}} {{assignedTo.firstName}}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="submit" value="Go" class="button" />
+                            </td>
+                        </tr>
+                    </table> 
+                </td>
+                <td>
+                    <table border="0" summary="" >
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="jobName">Job Name</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <input name="jobNameChild" [(ngModel)] = "jobSOModel.jobNameChild" disabled={{!jobSOModel.includeChildJobs}} />
+                            </td>
+                            <td nowrap="nowrap" align="right">
+                                <label for="jobType">Job Type</label>
+                            </td>
+                            <td colspan="1" rowspan="1" align="left" valign="middle">
+                                <select name="jobTypeChild" [(ngModel)] = "jobSOModel.jobTypeChild" disabled={{!jobSOModel.includeChildJobs}}>
+                                    <option value=""></option>
+                                    <option *ngFor = 'let jobType of jobTypeList' value={{jobType.jobType}}>{{jobType.jobType}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="jobStatus">Job Status</label>
+                            </td>
+                            <td colspan="1" rowspan="1" align="left" valign="middle">
+                                <select name="jobStatusChild" [(ngModel)] = "jobSOModel.jobStatusChild" disabled={{!jobSOModel.includeChildJobs}}>
+                                    <option value=""></option>
+                                    <option *ngFor = 'let jobStatus of jobStatusList' value={{jobStatus.jobStatus}}>{{jobStatus.jobStatus}}</option>
+                                </select>
+                            </td>
+                            <td nowrap="nowrap" align="right">
+                                <label for="assignedTo">Assigned To</label>
+                            </td>
+                            <td colspan="1" rowspan="1" align="left" valign="middle">
+                                <select name="assignedToChild" [(ngModel)] = "jobSOModel.assignedToChild" disabled={{!jobSOModel.includeChildJobs}}>
+                                    <option value=""></option>
+                                    <option *ngFor = 'let assignedTo of assignedToList' value={{assignedTo.userId}}>{{assignedTo.lastName}} {{assignedTo.firstName}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table> 
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<div class="button-region">
+    <a [routerLink] = "['/JobCreate']" class="button">Create</a>
+</div>
+
+<div class="report-region-2">
+    <table cellpadding="0" border="0" cellspacing="0" summary="" class="report-standard">
+        <tr >
+            <th></th>
+            <th></th>
+            <th>Job No</th>
+            <th>Parent Job Name</th>
+            <th>Job Name</th>
+            <th>Job Type</th>
+            <th>Job Stage</th>
+            <th>Job Priority</th>
+            <th>Job Status</th>
+            <th>Job Resolution</th>
+            <th>Job Order</th>
+            <th>Assigned To</th>
+            <th>Timesheet Code</th>
+            <th>Estimated Start Date</th>
+            <th>Actual Start Date</th>
+            <th>Estimated End Date</th>
+            <th>Actual End Date</th>
+            <th>Estimated Hrs</th>
+            <th>Completed Hrs</th>
+            <th>Active</th>
+        </tr>
+        <tr *ngFor = 'let job of jobList' class="highlight-row">
+            <td><a [routerLink] = "['/JobEdit', job.jobNo]">Edit</a></td>
+            <td><a [routerLink] = "" (click) = "deleteJob(job.jobNo)">Delete</a></td>
+            <td>{{job.jobNo}}</td>
+            <td>{{job.parentJobObj?.jobName}}</td>
+            <td>{{job.jobName}}</td>
+            <td>{{job.jobType}}</td>
+            <td>{{job.jobStage}}</td>
+            <td>{{job.jobPriority}}</td>
+            <td>{{job.jobStatus}}</td>
+            <td>{{job.jobResolution}}</td>
+            <td>{{job.jobOrder}}</td>
+            <td>{{job.assignedToObj?.firstName}} {{job.assignedToObj?.lastName}}</td>
+            <td>{{job.timesheetCode}}</td>
+            <td>{{job.estimatedStartDate | date : "dd-MMM-yyyy"}}</td>
+            <td>{{job.actualStartDate | date : "dd-MMM-yyyy"}}</td>
+            <td>{{job.estimatedEndDate | date : "dd-MMM-yyyy"}}</td>
+            <td>{{job.actualEndDate | date : "dd-MMM-yyyy"}}</td>
+            <td>{{job.estimatedHrs}}</td>
+            <td>{{job.completedHrs}}</td>
+            <td *ngIf="job.active" align="center"><input type="checkbox" checked disabled></td>
+            <td *ngIf="!job.active" align="center"><input type="checkbox" disabled></td>
+            <!-- <td>{{job.dateCrt | date : "dd-MMM-yyyy HH:mm:ss"}}</td>
+            <td>{{job.userCrtObj?.firstName}} {{job.userCrtObj?.lastName}}</td>
+            <td>{{job.dateMod | date : "dd-MMM-yyyy HH:mm:ss"}}</td>
+            <td>{{job.userModObj?.firstName}} {{job.userModObj?.lastName}}</td> -->
+        </tr>
+    </table>
+</div>

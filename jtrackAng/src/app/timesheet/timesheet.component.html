@@ -1,0 +1,80 @@
+<div class="form-region">
+    <form (ngSubmit)="getTimeSheetList()">
+        <table cellpadding="0" border="0" cellspacing="0" summary="" class="form-standard">
+            <tr>
+                <td>
+                    <table border="0" summary="" >
+                        <tr>
+                            <td nowrap="nowrap" align="right">
+                                <label for="user">User </label>
+                            </td>
+                            <td colspan="1" rowspan="1" align="left" valign="middle">
+                                <select name="user" [(ngModel)] = "timesheetSOModel.userId">
+                                    <option value=""></option>
+                                    <option *ngFor = 'let user of userList' value={{user.userId}}>{{user.firstName}} {{user.lastName}}</option>
+                                </select>
+                            </td>
+                            <td nowrap="nowrap" align="right">
+                                <label for="workedDateFrom">Worked Date From</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <input type="date" name="workedDateFrom" [(ngModel)] = "timesheetSOModel.workedDateFrom" />
+                            </td>
+                            <td nowrap="nowrap" align="right">
+                                <label for="workedDateTo">To</label>
+                            </td>
+                            <td  colspan="1" rowspan="1" align="left" valign="middle">
+                                <input type="date" name="workedDateTo" [(ngModel)] = "timesheetSOModel.workedDateTo" />
+                            </td>
+                            <td>
+                                <input type="submit" value="Go" class="button" />
+                            </td>
+                        </tr>
+                    </table> 
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<div class="button-region">
+    <a [routerLink] = "['/TimesheetCreate']" class="button">Create</a>
+</div>
+
+<div class="report-region-2">
+	<table cellpadding="0" border="0" cellspacing="0" summary="" class="report-standard">
+		<tr >
+            <th></th>
+            <th></th>
+            <th>User</th>
+            <th>Job No</th>
+            <th>Job Name</th>
+            <th>Worked Date</th>
+            <th>Worked Day</th>
+            <th>Worked Hrs</th>
+            <th>Timesheet Code</th>
+            <th>Active</th>
+            <th>Date Created</th>
+            <th>User Created</th>
+            <th>Date Modified</th>
+            <th>User Modified</th>
+		</tr>
+        <tr *ngFor = 'let timesheet of timesheetList' class="highlight-row">
+            <td><a [routerLink] = "['/TimesheetEdit', timesheet.timesheetId]">Edit</a></td>
+            <td><a [routerLink] = "" (click) = "deleteTimesheet(timesheet.timesheetId)">Delete</a></td>
+            <td>{{timesheet.userObj?.firstName}} {{timesheet.userObj?.lastName}}</td>
+            <td>{{timesheet.jobNo}}</td>
+            <td>{{timesheet.jobObj?.jobName}}</td>
+            <td>{{timesheet.workedDate | date : "dd-MMM-yyyy"}}</td>
+            <td>{{timesheet.workedDate | date : "EEE"}}</td>
+            <td>{{timesheet.workedHrs}}</td>
+            <td>{{timesheet.timesheetCode}}</td>
+            <td *ngIf="timesheet.active" align="center"><input type="checkbox" checked disabled></td>
+            <td *ngIf="!timesheet.active" align="center"><input type="checkbox" disabled></td>
+            <td>{{timesheet.dateCrt | date : "dd-MMM-yyyy HH:mm:ss"}}</td>
+            <td>{{timesheet.userCrtObj?.firstName}} {{timesheet.userCrtObj?.lastName}}</td>
+            <td>{{timesheet.dateMod | date : "dd-MMM-yyyy HH:mm:ss"}}</td>
+            <td>{{timesheet.userModObj?.firstName}} {{timesheet.userModObj?.lastName}}</td>
+        </tr>
+	</table>
+</div>

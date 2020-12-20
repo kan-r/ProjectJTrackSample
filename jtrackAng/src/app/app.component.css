@@ -1,0 +1,9 @@
+/* override bootstrap settings */
+
+.container {
+  margin: 28px 5px 5px 5px;
+}
+
+.row  {
+  margin-top: 5px;
+}

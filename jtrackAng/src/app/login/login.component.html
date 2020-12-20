@@ -1,0 +1,29 @@
+<div class="form-region">
+    <table cellpadding="0" border="0" cellspacing="0" summary="" class="form-standard">
+        <tr>
+            <th><div>JTrack - Login</div></th>
+        </tr>
+        <tr>
+            <td>
+                <form (ngSubmit)="logIn()" >
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>User:</td>
+                                <td><input type="text" name="user" size="30" maxlength="40" [(ngModel)]="user" /></td>
+                            </tr>
+                            <tr>
+                                <td>Password:</td>
+                                <td><input type="password" name="password" size="30" maxlength="32" [(ngModel)]="password" /></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><input type="submit" value="Login" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
